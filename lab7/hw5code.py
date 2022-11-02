@@ -46,7 +46,10 @@ def find_best_split(feature_vector, target_vector):
     threshold_best = None
     gini_best = None
     
-    for t in np.linspace(min_feature, max_feature, num=100):   
+    sorted_features = sorted(feature_vector)
+    
+    for i in range(len(sorted_features) - 1):
+        t = (sorted_features[i] + sorted_features[i + 1]) / 2.0  
         R_l = R_m[R_m < t]
         R_r = R_m[R_m >= t]
         
